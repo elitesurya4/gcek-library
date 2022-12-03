@@ -4668,3 +4668,12 @@ ul{
         margin-top: -5vw !important;
     }
 }
+
+/*-----------------------CREDITS-------------------------- */
+#suryanshu,#suprita{
+    text-decoration: none;
+    color: white;
+}
+#suryanshu:hover,#suprita:hover{
+    text-decoration: underline;
+}
