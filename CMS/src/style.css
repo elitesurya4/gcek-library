@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alkalami&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+
+*{
+    border: 0em;
+    margin: 0em;
+    padding: 0em;
+    outline: 0em;
+}
+html{
+    scroll-behavior: smooth;
+}
+html, body{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+body{
+    /* background: white !important; */
+    font-family: sans-serif !important;
+    position: relative;
+}
+::-webkit-scrollbar{
+    width: 0;
+}
+
+/* --------------NAVBAR--------------- */
+
+#nav-bar{
+    background: linear-gradient(to right, #00093c, #2d0b00);
+    overflow: auto;
+    width: 100%;
+    border-bottom: 0.3vw solid rgb(16, 114, 76);
+    /* z-index: 1; */
+}
+#navbar{
+    padding-left: 70vw;   
+    float:right;
+}
+.nav-link{
+    color:aliceblue !important;
+    font-family: 'Rajdhani', sans-serif;
+}
+.nav-link:hover{
+    background: rgb(16, 114, 76);
+    border-radius: 0.5vw;
+}
+#navbarSupportedContent{
+    color:white;
+}
+@media(max-width:991.5px){
+    #navbar{
+        padding-left: 0vw;
+        float:left;
+    }
+}
+
+/* -------------SIDE-BODY-CONTENT----------- */
+#side-body1{
+    padding-top: 2vw;
+    display: block;
+}
+#side-body2,#side-body3,#side-body4,#side-body5{
+    padding-top: 2vw;
+    display: none;
+}
+.side1,.side2,.side3,.side4,.side5{
+    height: 100%;
+    overflow-y: scroll;
+}
+#body1,#body2,#body3,#body4,#body5{
+    text-align: justify;
+    font-family: 'Kanit', sans-serif;
+}
+.row-height{
+    height: 100vh;
+}
+.side-head{
+    font-family: 'Alkalami', serif;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+* {
+  -ms-overflow-style: none !important;
+}
+/* --------------SIDE-BUTTON-SECTION--------------------- */
+#hidden-btn{
+    float:left;
+    font-size: 2rem;
+    border:2px solid rgb(68, 68, 60);
+    border-radius: 0.2rem;
+    display:none;
+    margin-top: 1.5vw;
+}
+#theory-btn{
+    padding-top: 1vw;
+}
+#theory-cont{
+    border-right:2px solid black;
+}
+#side-btn{
+    background: linear-gradient(180deg, rgb(16, 114, 76), whitesmoke);
+    color:#000;
+    border:none;
+    margin: 0.7vw;
+    border-radius: 0.3vw;
+    font-family: 'Allerta Stencil', sans-serif;
+}
+@media(max-width:991.5px){
+  #hidden-btn{
+    display:block;
+    cursor:pointer;
+  }
+  .side-head{
+    margin-left: 5vw;
+    margin-top: 0.1vw;
+  }
+  #theory-btn{
+    display:none;
+  }
+  #theory-btn1{
+    display: block;
+    text-align: left;
+  }
+  #offcanvasWithBothOptions{
+    width:30vw;
+    height:-5vw !important;
+  }
+  .offcanvas{
+    height:110vw;
+  }
+}
+@media(max-width:850px){
+    .side-head{
+      margin-left: 6vw;
+      margin-top: 0.5vw;
+    }
+}
+@media(max-width:625px){
+  #offcanvasWithBothOptions{
+    width:35vw;
+  }
+  .side-head{
+    margin-left: 7vw;
+    margin-top: 0.7vw;
+  }
+}
+@media(max-width:570px){
+  #offcanvasWithBothOptions{
+    width:45vw;
+  }
+  .side-head{
+    margin-left: 8vw;
+    margin-top: 1vw;
+  }
+}
+@media(max-width:500px){
+    .side-head{
+      margin-left: 9vw;
+      margin-top: 1.5vw;
+    }
+  }
+@media(max-width:454px){
+  #offcanvasWithBothOptions{
+    margin-top:10rem;
+  } 
+  #hidden-btn{
+    margin-top: 0.8rem;;
+  }
+  .side-head{
+    margin-left: 9.5vw;
+    margin-top: 2.5vw;
+  }
+}
+@media(max-width:420px){
+  #offcanvasWithBothOptions{
+    width:50vw;
+  }
+  .side-head{
+    margin-left: 10.3vw;
+    margin-top: 3vw;
+  }
+}
+@media(max-width:375px){
+  #offcanvasWithBothOptions{
+    width:55vw;
+  }
+  .side-head{
+    margin-left: 11.3vw;
+    margin-top: 3.3vw;
+  }
+}
+@media(max-width:340px){
+  #offcanvasWithBothOptions{
+    width:60vw;
+  }
+  .side-head{
+    margin-left: 13vw;
+    margin-top: 4vw;
+  }
+}
+@media(max-width:310px){
+  #offcanvasWithBothOptions{
+    width:65vw;
+  }
+  .side-head{
+    margin-left: 14vw;
+    margin-top: 5vw;
+  }
+}
+
+/* ------------FOOTER------------ */
+#footer-section{
+    background: linear-gradient(to right, #00080c, #046b79,#051158);
+    color:white;
+    font-family: serif;
+}
+

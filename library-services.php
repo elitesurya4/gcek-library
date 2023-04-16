@@ -1,3 +1,6 @@
+<?php require('CMS/connection.php');
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +21,7 @@
   <nav class="navbar navbar-inverse" id="bar">
       <div class="container-fluid">
           <ul class="nav navbar-nav navbar-right" id="left-1">
-              <li><a href="index.html" class="navbar_link"><span class="material-icons" id="nav-icon">home</span>Home</a></li>
+              <li><a href="index.php" class="navbar_link"><span class="material-icons" id="nav-icon">home</span>Home</a></li>
             </ul>
             <ul class="col nav navbar-nav navbar-right" id="left-2">
               <li><a href="https://gcekbpatna.ac.in/" class="navbar_link"><span class="material-icons" id="nav-icon">info</span>About&nbsp;GCEK</a></li>
@@ -29,7 +32,7 @@
             <ul class="col"></ul>
             <ul class="col"></ul>
             <ul class="nav navbar-nav navbar-right" id="right-1">
-              <li><a href="index.html" class="navbar_link-1"><span class="material-icons" id="nav-icon">public</span>www.library.gcekbpatna.ac.in</a></li>
+              <li><a href="index.php" class="navbar_link-1"><span class="material-icons" id="nav-icon">public</span>www.library.gcekbpatna.ac.in</a></li>
             </ul>
       </div>
   </nav>
@@ -46,22 +49,22 @@
 <!-------------Notice Section------------->
 <nav class="navbar navbar-inverse" id="scrolling-text">
   <div class="container-fluid" id="cssmarquee">
-    <button class="test-btn"><a href="noticeboard.html" class="test-btn2">Notice</a></button>
+    <button class="test-btn"><a href="noticeboard.php" class="test-btn2">Notice</a></button>
     <p><img class="img-fluid" src="CSS/new.gif">WELCOME TO CENTRAL LIBRARY GCE KALAHANDI</p>
   </div>
 </nav>
 <!-------------Navigation Section------------->
 <div class="navigation-section">
-  <button class="nav-btn1"><a href="index.html" class="nav-btn2">Home</a></button>
-  <button class="nav-btn1"><a href="library-section.html" class="nav-btn2">Library&nbsp;Section</a></button>
-  <button class="nav-btn1"><a href="library-services.html" class="nav-btn2">Library&nbsp;Services</a></button>
-  <button class="nav-btn1"><a href="digital-library.html" class="nav-btn2">Digital&nbsp;Library</a></button>
-  <button class="nav-btn1" id="nav-btn-1"><a href="staff-members.html" class="nav-btn2">Staff&nbsp;Members</a></button>
-  <button class="nav-btn1" id="nav-btn-1"><a href="opac.html" class="nav-btn2">OPAC</a></button>
-  <button class="nav-btn1" id="nav-btn-1"><a href="online-registration.html" class="nav-btn2">Online&nbsp;Registration</a></button>
-  <button class="nav-btn1" id="nav-btn-1"><a href="e-newspaper.html" class="nav-btn2">e&nbsp;-&nbsp;newspapers</a></button>
-  <button class="nav-btn1" id="nav-btn-1"><a href="Student-repository.html" class="nav-btn2">Student&nbsp;Repository</a></button>
-  <button class="nav-btn1" id="nav-btn-1"><a href="request-books.html"class="nav-btn2">Suggest&nbsp;Books</a></button>
+  <button class="nav-btn1"><a href="index.php" class="nav-btn2">Home</a></button>
+  <button class="nav-btn1"><a href="library-section.php" class="nav-btn2">Library&nbsp;Section</a></button>
+  <button class="nav-btn1"><a href="library-services.php" class="nav-btn2">Library&nbsp;Services</a></button>
+  <button class="nav-btn1"><a href="digital-library.php" class="nav-btn2">Digital&nbsp;Library</a></button>
+  <button class="nav-btn1" id="nav-btn-1"><a href="staff-members.php" class="nav-btn2">Staff&nbsp;Members</a></button>
+  <button class="nav-btn1" id="nav-btn-1"><a href="opac.php" class="nav-btn2">OPAC</a></button>
+  <button class="nav-btn1" id="nav-btn-1"><a href="online-registration.php" class="nav-btn2">Online&nbsp;Registration</a></button>
+  <button class="nav-btn1" id="nav-btn-1"><a href="e-newspaper.php" class="nav-btn2">e&nbsp;-&nbsp;newspapers</a></button>
+  <button class="nav-btn1" id="nav-btn-1"><a href="Student-repository.php" class="nav-btn2">Student&nbsp;Repository</a></button>
+  <button class="nav-btn1" id="nav-btn-1"><a href="request-books.php"class="nav-btn2">Suggest&nbsp;Books</a></button>
   <!-- The Modal -->
 <div id="my_Modal" class="modal">
 
@@ -134,7 +137,7 @@
   <script src="JAVASCRIPT/digital.js"></script>
   <div class="services-link">
     <p class="services-link-1">
-        <a href="library-services.html" id="wiki-1">HOW&nbsp;TO&nbsp;USE&nbsp;DIGITAL&nbsp;LIBRARY&nbsp;SERVICES&nbsp;?&nbsp;</a>
+        <a href="library-services.php" id="wiki-1">HOW&nbsp;TO&nbsp;USE&nbsp;DIGITAL&nbsp;LIBRARY&nbsp;SERVICES&nbsp;?&nbsp;</a>
     </p>
   </div>
   <div class="intro-services">
@@ -186,16 +189,16 @@
       </div>
       <div class="col" id="footer-link">
           <h3>LINKS</h3>
-          <a href="index.html">Home</a><br>
-          <a href="library-section.html">Library&nbsp;Section</a><br>
-          <a href="library-services.html">Library&nbsp;Services</a><br>
-          <a href="digital-library.html">Digital Library</a><br>
-          <a href="staff-members.html">Staff&nbsp;Members</a><br>
-          <a href="opac.html">OPAC</a><br>
-          <a href="online-registration.html">Online&nbsp;Registration</a><br>
-          <a href="e-newspaper.html">e&nbsp;-&nbsp;newspapers</a><br>
-          <a href="Student-repository.html">Student&nbsp;Repository</a><br>
-          <a href="request-books.html">Suggest Books</a><br>
+          <a href="index.php">Home</a><br>
+          <a href="library-section.php">Library&nbsp;Section</a><br>
+          <a href="library-services.php">Library&nbsp;Services</a><br>
+          <a href="digital-library.php">Digital Library</a><br>
+          <a href="staff-members.php">Staff&nbsp;Members</a><br>
+          <a href="opac.php">OPAC</a><br>
+          <a href="online-registration.php">Online&nbsp;Registration</a><br>
+          <a href="e-newspaper.php">e&nbsp;-&nbsp;newspapers</a><br>
+          <a href="Student-repository.php">Student&nbsp;Repository</a><br>
+          <a href="request-books.php">Suggest Books</a><br>
       </div>
       <div class="col" id="footer-social">
           <h3>SOCIAL MEDIA</h3>
@@ -205,7 +208,22 @@
               <i class="fab fa-youtube"></i>
               <i class="fab fa-google"></i>
               <div class="footer-cookies">
-              <div class="download-btn"><a href="#" class="download-btn1"><i class="fa fa-download"></i></a><a class="download-btn2" id="download-btn3" href="DOCUMENTS\OPAC Manual GCEK.pdf">OPAC&nbsp;Manual</a></i></div>
+
+                <?php
+              $query = "SELECT * FROM opacmanual";
+              $query_run = mysqli_query($con2,$query);
+              ?>
+              <?php
+              if(mysqli_num_rows($query_run)>0){
+                foreach($query_run as $row)
+                {
+                  ?>
+                  <div class="download-btn"><a href="#" class="download-btn1"><i class="fa fa-download"></i></a><a class="download-btn2" id="download-btn3" href="<?php echo "CMS/src/" . $row['opac_manual_file'];?>">OPAC&nbsp;Manual</a></i></div>
+                  <?php
+                }
+              }
+              ?>
+
               <div class="privacy"><a class="privacy2" id="privacy3" href="privacy.html">Privacy&nbsp;Policy</a></div>
               <div class="disclaimer"><a class="boat" id="My"><h4 class="disclaimer2" id="disclaimer3" href="#myModal10">Disclaimer</h4></a></div>
               </div>
@@ -224,8 +242,7 @@
       </div>
       <hr class="footer-hr">
   <p class="copyright" id="copy">Copyrights © 2022 GOVERNMENT COLLEGE OF ENGINEERING KALAHANDI</p>
-  <p class="copyright-1" id="copy-1">Website Designed & Developed by <a href="https://elitesurya4.github.io/portfolio/" id="suryanshu" target="blank">Suryanshu Patnaik </a> & <a href="https://s-2001-star.github.io/portfolio/" id="suprita" target="blank">Suprita Panda</a> (ELECTRICAL BATCH OF 2019-23) - All Rights Reserved</p>
-  </div>
+  <p class="copyright-1" id="copy-1">Website Designed & Developed by <a href="https://elitesurya4.github.io/portfolio/" id="suryanshu" target="blank">Suryanshu Patnaik </a> & <a href="https://s-2001-star.github.io/portfolio/" id="suprita" target="blank">Suprita Panda</a> (ELECTRICAL BATCH OF 2019-23) - All Rights Reserved</p>    </div>
 </footer> 
 </body>
 </html>

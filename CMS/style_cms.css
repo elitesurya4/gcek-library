@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+*{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+html,body{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    overflow-x: hidden !important;
+}
+::-webkit-scrollbar{
+  width: 0;
+}
+body{
+  background: linear-gradient(to right, #046b79bc,#051158e3);
+}
+
+/*--------------CMS FORM-------------*/
+.cms_form{
+  margin:5vw;
+}
+#cms_row_id{
+  border-radius:2vw !important;
+  background:white !important;
+  box-shadow:0vw 0vw 2vw 0vw black !important;   
+}
+/*--------------CMS HEADING-------------*/
+.cms_heading{
+  font-family: 'Titillium Web', sans-serif;
+  color: rgb(16, 114, 76);
+}
+/*--------------SIDE IMAGE-------------*/
+.login1{
+  border: none !important;
+  outline: none !important;
+  height: 50px !important;
+  width:100% !important;
+  background-color: rgb(16, 114, 76);
+  color:white;
+  border-radius: 4px !important;
+  font-weight: bold;
+}
+.login1:hover{
+  background-color: white;
+  /* color:#00093c; */
+  color:rgb(11, 11, 167);
+  border:0.2vw solid rgb(11, 11, 167) !important;
+}
