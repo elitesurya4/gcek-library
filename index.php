@@ -232,7 +232,7 @@ session_start();
   <div class="img-sec">
     <div class="carousel slide" data-ride="carousel" id="slider">
       <div class="carousel-inner" id="slider-container">
-          <div>
+          <div class="images">
               <img class="d-block w-100" src="CSS/GALLERY1.jpg" alt="Image">
           </div>
           <div class="images">

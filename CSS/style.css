@@ -1927,6 +1927,7 @@ ul{
     display: none;
     animation-name:initial;
     animation-duration: 2s;
+    margin-left:-2vw !important;
 }
 @keyframes fade{
     from {
