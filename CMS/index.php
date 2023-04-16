@@ -177,36 +177,31 @@ if(isset($_GET['id'])){
                 </thead>
                 <tbody>
                     <?php
-                    if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
-                        $sql = "SELECT * FROM noticeboard";
-                        $result = $con3->query($sql);
+                    $display_query = "SELECT * FROM noticeboard";
 
-                        if(!$result){
-                            die("Invalid query: " . $con3->error);
-                        }
+                    $results = mysqli_query($con3,$display_query);
+                    $count = mysqli_num_rows($results);
 
-                        while($row = $result->fetch_assoc()){
-                            echo "<tr>
-                                    <td>" . $row["id"] . "</td>
-                                    <td>" . $row["notice_title"] . "</td>
-                                    <td>" . $row["notice_date"] . "</td>
-                                    <td>
-                                    <a class='btn btn-danger' href='index.php?id=$row[id]'>Delete</a>";       
+                    if($count>0){
+                        while($data_row = mysqli_fetch_array($results,MYSQLI_ASSOC)){
+                            ?>
+                        <tr>
+                            <td><?php echo $data_row['id']; ?></td>
+                            <td><?php echo $data_row['notice_title']; ?></td>
+                            <td><?php echo $data_row['notice_date']; ?></td>
+                            <td>
+
+                                <a href='<?php echo "NOTICE/" . $data_row['notice_file'];?>' class="btn btn-info" type="button" target="blank">VIEW</a>
+                                <?php
+                                echo "<a href='index.php?id=$data_row[id]' class='btn btn-danger' type='button'>DELETE</a>"
+                                ?>
+                            </td>
+
+                        </tr>
+                        <?php
                         }
-                        
                     }
                     ?>
-                    <?php
-                            if(mysqli_num_rows($result)>0){
-                                foreach($result as $row) {
-                                    ?>
-                                    <a class='btn btn-primary' href='<?php echo "NOTICE/" . $row['notice_file'];?>' target="blank">View</a>
-                                    <?php
-                                }
-                            }
-                            ?>
-                        </td>
-                        </tr>
                 <tbody>
             </table>
             <script>
@@ -738,7 +733,7 @@ if(isset($_GET['id'])){
                                 foreach($result as $row) {
                                     ?>
                                     <a class='btn btn-primary' href='<?php echo "src/" . $row['opac_manual_file'];?>' target="blank">View</a>
-                                    <?php
+                            <?php
                                 }
                             }
                             ?>
