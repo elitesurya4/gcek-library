@@ -16,6 +16,8 @@ if(isset($_GET['id'])){
     $delete = mysqli_query($con1,"DELETE FROM `others` WHERE `id` = '$id'");
 
     $delete = mysqli_query($con2,"DELETE FROM `opacmanual` WHERE `id` = '$id'");
+
+    $delete = mysqli_query($con3,"DELETE FROM `noticeboard` WHERE `id` = '$id'");
 }
 ?>
 <!DOCTYPE html>
@@ -120,11 +122,106 @@ if(isset($_GET['id'])){
         <div class = "row row-height">
           <div class = "col side1">
             <p id="body1">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt earum sapiente magnam tempore blanditiis laboriosam quaerat placeat enim omnis, distinctio debitis expedita ullam! Cum optio perspiciatis pariatur veniam soluta inventore.
-                Quisquam at velit accusantium harum voluptatem excepturi eveniet exercitationem incidunt aperiam. Rem voluptatem, perspiciatis necessitatibus, rerum odio quas quasi iusto provident est amet, aperiam porro quod mollitia voluptate tenetur dolor?
-                Voluptatum quibusdam aperiam eum incidunt iure, placeat aliquam optio voluptate, alias laboriosam facilis dicta corporis, minus architecto mollitia necessitatibus porro modi temporibus repellat vel suscipit deserunt dolore. Hic, eum nesciunt.
-                Eos maiores enim dolore corrupti vel illum doloribus non quae dolorem adipisci vitae repellendus iusto perferendis velit labore odio nobis, fuga, commodi illo aliquid beatae sint? Minima facere cupiditate repellendus?
-                Doloremque, qui. Accusantium blanditiis earum placeat excepturi, optio nisi iusto eligendi odio, aliquam expedita id minus, quaerat sed? Deserunt labore neque blanditiis autem velit reiciendis quia debitis, ducimus et vel?
+                <?php
+                if(isset($_SESSION['status']) && $_SESSION != ''){
+                    ?>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Hey!</strong> <?php echo $_SESSION['status'];?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <?php
+                    unset($_SESSION['status']);
+                }
+                ?>
+            <form action="noticeboard_upload.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group row">
+                    <label for="title" class="col-sm-2 col-form-label">Title</label>
+                    <div class="col-sm-10">
+                    <input name="notice_title" type="text" class="form-control" id="title" placeholder="Enter Title of the Notice">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label for="date" class="col-sm-2 col-form-label">Date</label>
+                    <div class="col-sm-10">
+                    <input name="notice_date" type="date" class="form-control" id="date">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label for="inputGroupFile01" class="col-sm-2 col-form-label">Notice File</label>
+                    <div class="col-sm-10">
+                    <input name="notice_file" type="file" class="custom-file-input" id="inputGroupFile01">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                    <button name="notice_file_upload" type="submit" class="btn btn-success">Upload</button>
+                    </div>
+                </div>
+            </form>
+            <br>
+
+            <section id="noticeboard_sec">
+            <table id="noticeboard" class="display nowrap" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>SL. NO.</th>
+                        <th>TITLE</th>
+                        <th>DATE</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
+                        $sql = "SELECT * FROM noticeboard";
+                        $result = $con3->query($sql);
+
+                        if(!$result){
+                            die("Invalid query: " . $con3->error);
+                        }
+
+                        while($row = $result->fetch_assoc()){
+                            echo "<tr>
+                                    <td>" . $row["id"] . "</td>
+                                    <td>" . $row["notice_title"] . "</td>
+                                    <td>" . $row["notice_date"] . "</td>
+                                    <td>
+                                    <a class='btn btn-danger' href='index.php?id=$row[id]'>Delete</a>";       
+                        }
+                        
+                    }
+                    ?>
+                    <?php
+                            if(mysqli_num_rows($result)>0){
+                                foreach($result as $row) {
+                                    ?>
+                                    <a class='btn btn-primary' href='<?php echo "NOTICE/" . $row['notice_file'];?>' target="blank">View</a>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </td>
+                        </tr>
+                <tbody>
+            </table>
+            <script>
+                $(document).ready(function() {
+                $('#noticeboard').DataTable( {
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                } );
+            } );
+            </script>
+            </section>
+
+
             </p>
           </div>
         </div>
@@ -286,7 +383,7 @@ if(isset($_GET['id'])){
                         $result = $con1->query($sql);
 
                         if(!$result){
-                            die("Invalid query: " . $connection->error);
+                            die("Invalid query: " . $con1->error);
                         }
 
                         while($row = $result->fetch_assoc()){
@@ -339,7 +436,7 @@ if(isset($_GET['id'])){
                         $result = $con1->query($sql);
 
                         if(!$result){
-                            die("Invalid query: " . $connection->error);
+                            die("Invalid query: " . $con1->error);
                         }
 
                         while($row = $result->fetch_assoc()){
@@ -392,7 +489,7 @@ if(isset($_GET['id'])){
                         $result = $con1->query($sql);
 
                         if(!$result){
-                            die("Invalid query: " . $connection->error);
+                            die("Invalid query: " . $con1->error);
                         }
 
                         while($row = $result->fetch_assoc()){
@@ -445,7 +542,7 @@ if(isset($_GET['id'])){
                         $result = $con1->query($sql);
 
                         if(!$result){
-                            die("Invalid query: " . $connection->error);
+                            die("Invalid query: " . $con1->error);
                         }
 
                         while($row = $result->fetch_assoc()){
@@ -498,7 +595,7 @@ if(isset($_GET['id'])){
                         $result = $con1->query($sql);
 
                         if(!$result){
-                            die("Invalid query: " . $connection->error);
+                            die("Invalid query: " . $con1->error);
                         }
 
                         while($row = $result->fetch_assoc()){
@@ -551,7 +648,7 @@ if(isset($_GET['id'])){
                         $result = $con1->query($sql);
 
                         if(!$result){
-                            die("Invalid query: " . $connection->error);
+                            die("Invalid query: " . $con1->error);
                         }
 
                         while($row = $result->fetch_assoc()){
@@ -628,7 +725,7 @@ if(isset($_GET['id'])){
                                 $result = $con2->query($sql);
 
                                 if(!$result){
-                                    die("Invalid query: " . $connection->error);
+                                    die("Invalid query: " . $con2->error);
                                 }
 
                                 while($row = $result->fetch_assoc()){

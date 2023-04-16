@@ -166,7 +166,7 @@ session_start();
                 <i class="fab fa-google"></i>
                 <div class="footer-cookies">
 
-                  <?php
+                <?php
                 $query = "SELECT * FROM opacmanual";
                 $query_run = mysqli_query($con2,$query);
                 ?>

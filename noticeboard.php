@@ -109,66 +109,6 @@ session_start();
       <td>05-12-2022</td>
       <td><a href="#"><i class="fas fa-cloud-download-alt"></i></a></td>
     </tr>
-    <!-- <tr>
-      <td class="notice-id">1</td>
-      <td>NOTICE 2</td>
-      <td>05-11-2023</td>
-      <td><i class="fas fa-cloud-download-alt"></i></td>
-    </tr>
-    <tr>
-      <td class="notice-id">1</td>
-      <td>NOTICE 3</td>
-      <td>05-11-2023</td>
-      <td><i class="fas fa-cloud-download-alt"></i></td>
-    </tr>
-    <tr>
-      <td class="notice-id">1</td>
-      <td>NOTICE 4</td>
-      <td>05-11-2023</td>
-      <td><i class="fas fa-cloud-download-alt"></i></td>
-    </tr>
-    <tr>
-      <td class="notice-id">1</td>
-      <td>NOTICE 5</td>
-      <td>05-11-2023</td>
-      <td><i class="fas fa-cloud-download-alt"></i></td>
-    </tr>
-    <tr>
-      <td class="notice-id">1</td>
-      <td>NOTICE 6</td>
-      <td>05-11-2023</td>
-      <td><i class="fas fa-cloud-download-alt"></i></td>
-    </tr>
-    <tr>
-      <td class="notice-id">1</td>
-      <td>NOTICE 7</td>
-      <td>05-11-2023</td>
-      <td><i class="fas fa-cloud-download-alt"></i></td>
-    </tr>
-    <tr>
-      <td class="notice-id">1</td>
-      <td>NOTICE 8</td>
-      <td>05-11-2022</td>
-      <td><i class="fas fa-cloud-download-alt"></i></td>
-    </tr>
-    <tr>
-      <td class="notice-id">1</td>
-      <td>NOTICE 9</td>
-      <td>01-11-2022</td>
-      <td><i class="fas fa-cloud-download-alt"></i></td>
-    </tr>
-    <tr>
-      <td class="notice-id">1</td>
-      <td>NOTICE 10</td>
-      <td>21-10-2022</td>
-      <td><i class="fas fa-cloud-download-alt"></i></td>
-    </tr>
-    <tr>
-      <td class="notice-id">1</td>
-      <td>NOTICE 11</td>
-      <td>21-10-2022</td>
-      <td><i class="fas fa-cloud-download-alt"></i></td>
-    </tr> -->
   </tbody>
 </table>
 <!-----------FOOTER SECTION----------->
