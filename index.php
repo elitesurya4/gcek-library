@@ -340,7 +340,7 @@ session_start();
                   foreach($query_run as $row)
                   {
                     ?>
-                    <div class="download-btn"><a href="#" class="download-btn1"><i class="fa fa-download"></i></a><a class="download-btn2" id="download-btn3" href="<?php echo "CMS/src/" . $row['opac_manual_file'];?></a>">OPAC&nbsp;Manual</a></i></div>
+                    <div class="download-btn"><a href="#" class="download-btn1"><i class="fa fa-download"></i></a><a class="download-btn2" id="download-btn3" href="<?php echo "CMS/src/" . $row['opac_manual_file'];?>">OPAC&nbsp;Manual</a></i></div>
                     <?php
                   }
                 }
