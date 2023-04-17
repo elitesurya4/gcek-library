@@ -51,7 +51,21 @@ session_start();
 <nav class="navbar navbar-inverse" id="scrolling-text">
   <div class="container-fluid" id="cssmarquee">
     <button class="test-btn"><a href="noticeboard.php" class="test-btn2">Notice</a></button>
-    <p><img class="img-fluid" src="CSS/new.gif">WELCOME TO CENTRAL LIBRARY GCE KALAHANDI</p>
+    <?php
+    $sql_scroll = "SELECT * FROM scrollingnotice ORDER BY id LIMIT 1";
+    $result_scroll = mysqli_query($con4,$sql_scroll);
+
+    if(mysqli_num_rows($result_scroll)>0)
+    {
+      while($row_scroll = mysqli_fetch_array(($result_scroll)))
+      {
+        ?>
+        <p><img class="img-fluid" src="CSS/new.gif"><a href = "<?php echo "CMS/src/" . $row_scroll['scroll_link'];?>" target="_blank"><?php echo $row_scroll['scroll_title']; ?></a></p>
+        <?php
+      }
+
+    }
+    ?>
   </div>
 </nav>
 <!-------------Navigation Section------------->

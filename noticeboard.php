@@ -26,9 +26,22 @@ session_start();
           "columns": [{ "width": "20%" }, null, null]
       });
     });
+
+    function reverseTable() {
+    var table = document.getElementById("table-body")
+    var trContent = []
+    for (var i = 0, row; row = table.rows[i]; i++) {
+      trContent.push(row.innerHTML)
+    }
+    trContent.reverse()
+    for (var i = 0, row; row = table.rows[i]; i++) {
+      row.innerHTML = trContent[i]
+    }
+  }
   </script>
   
 </head>
+<body onload="reverseTable()">
 <!-------------Top Bar------------->
 <header>
   <nav class="navbar navbar-inverse" id="bar">
@@ -63,7 +76,21 @@ session_start();
 <nav class="navbar navbar-inverse" id="scrolling-text">
   <div class="container-fluid" id="cssmarquee">
     <button class="test-btn"><a href="noticeboard.php" class="test-btn2">Notice</a></button>
-    <p><img class="img-fluid" src="CSS/new.gif">WELCOME TO CENTRAL LIBRARY GCE KALAHANDI</p>
+    <?php
+    $sql_scroll = "SELECT * FROM scrollingnotice ORDER BY id LIMIT 1";
+    $result_scroll = mysqli_query($con4,$sql_scroll);
+
+    if(mysqli_num_rows($result_scroll)>0)
+    {
+      while($row_scroll = mysqli_fetch_array(($result_scroll)))
+      {
+        ?>
+        <p><img class="img-fluid" src="CSS/new.gif"><a href = "<?php echo "CMS/src/" . $row_scroll['scroll_link'];?>" target="_blank"><?php echo $row_scroll['scroll_title']; ?></a></p>
+        <?php
+      }
+
+    }
+    ?>
   </div>
 </nav>
 <!-------------Navigation Section------------->
@@ -102,13 +129,29 @@ session_start();
       <th><h1 class="notice-header">DOWNLOAD</h1></th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <td class="notice-id">1</td>
-      <td>WELCOME TO CENTRAL LIBRARY GCE KALAHANDI</td>
-      <td>05-12-2022</td>
-      <td><a href="#"><i class="fas fa-cloud-download-alt"></i></a></td>
-    </tr>
+  <tbody id="table-body">
+    <?php 
+    $display_query = "SELECT * FROM noticeboard";
+    
+    $results = mysqli_query($con3,$display_query);
+    $count = mysqli_num_rows($results);
+
+    if($count>0){
+      while($data_row = mysqli_fetch_array($results,MYSQLI_ASSOC)){
+        ?>
+        <tr>
+          <td class="notice-id"><?php echo $data_row['id']; ?></td>
+          <td><?php echo $data_row['notice_title']; ?></td>
+          <td><?php echo $data_row['notice_date']; ?></td>
+          <td>
+            <a href='<?php echo "CMS/NOTICE/" . $data_row['notice_file'];?>' class="btn btn-info" type="button" target="blank"><i class="fas fa-cloud-download-alt"></i></a>
+          </td>
+
+        </tr>
+        <?php
+        }
+      }
+      ?>
   </tbody>
 </table>
 <!-----------FOOTER SECTION----------->
@@ -151,7 +194,7 @@ session_start();
               <i class="fab fa-google"></i>
               <div class="footer-cookies">
 
-                <?php
+              <?php
               $query = "SELECT * FROM opacmanual";
               $query_run = mysqli_query($con2,$query);
               ?>

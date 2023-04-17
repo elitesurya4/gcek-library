@@ -18,6 +18,8 @@ if(isset($_GET['id'])){
     $delete = mysqli_query($con2,"DELETE FROM `opacmanual` WHERE `id` = '$id'");
 
     $delete = mysqli_query($con3,"DELETE FROM `noticeboard` WHERE `id` = '$id'");
+
+    $delete = mysqli_query($con4,"DELETE FROM `scrollingnotice` WHERE `id` = '$id'");
 }
 ?>
 <!DOCTYPE html>
@@ -230,12 +232,96 @@ if(isset($_GET['id'])){
     <div class = "container-fluid">
         <div class = "row row-height">
           <div class = "col side2">
+            <p class="note note-light text-danger">
+                <strong>Note:</strong> This scrolling notice is limit to one scolling notice only. Click the delete button before uploading a new scrolling notice. If there is no scrolling notice available then directly upload a new scrolling notice. View the file by clicking the view button.
+            </p>
             <p id="body2">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt earum sapiente magnam tempore blanditiis laboriosam quaerat placeat enim omnis, distinctio debitis expedita ullam! Cum optio perspiciatis pariatur veniam soluta inventore.
-                Quisquam at velit accusantium harum voluptatem excepturi eveniet exercitationem incidunt aperiam. Rem voluptatem, perspiciatis necessitatibus, rerum odio quas quasi iusto provident est amet, aperiam porro quod mollitia voluptate tenetur dolor?
-                Voluptatum quibusdam aperiam eum incidunt iure, placeat aliquam optio voluptate, alias laboriosam facilis dicta corporis, minus architecto mollitia necessitatibus porro modi temporibus repellat vel suscipit deserunt dolore. Hic, eum nesciunt.
-                Eos maiores enim dolore corrupti vel illum doloribus non quae dolorem adipisci vitae repellendus iusto perferendis velit labore odio nobis, fuga, commodi illo aliquid beatae sint? Minima facere cupiditate repellendus?
-                Doloremque, qui. Accusantium blanditiis earum placeat excepturi, optio nisi iusto eligendi odio, aliquam expedita id minus, quaerat sed? Deserunt labore neque blanditiis autem velit reiciendis quia debitis, ducimus et vel?
+            <?php
+                if(isset($_SESSION['status1']) && $_SESSION != ''){
+                    ?>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Hey!</strong> <?php echo $_SESSION['status1'];?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <?php
+                    unset($_SESSION['status1']);
+                }
+                ?>
+            <form action="scrolling_notice_upload.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group row">
+                    <label for="title" class="col-sm-2 col-form-label">Title</label>
+                    <div class="col-sm-10">
+                    <input name="scroll_title" type="text" class="form-control" id="title" placeholder="Enter Title of the Scrolling Notice">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label for="inputGroupFile01" class="col-sm-2 col-form-label">Notice File</label>
+                    <div class="col-sm-10">
+                    <input name="scroll_link" type="file" class="custom-file-input" id="inputGroupFile01">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                    <button id="scroll_submit_btn" name="scrolling_notice_upload" type="submit" class="btn btn-success">Upload</button>
+                    </div>
+                </div>
+            </form>
+            <br>
+
+            <section id="noticeboard_sec">
+            <table id="scrolling_notice" class="display nowrap" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>SL. NO.</th>
+                        <th>TITLE</th>
+                        <th>FILE NAME</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $display_query = "SELECT * FROM scrollingnotice";
+
+                    $results = mysqli_query($con4,$display_query);
+                    $count = mysqli_num_rows($results);
+
+                    if($count>0){
+                        while($data_row = mysqli_fetch_array($results,MYSQLI_ASSOC)){
+                            ?>
+                        <tr>
+                            <td><?php echo $data_row['id']; ?></td>
+                            <td><?php echo $data_row['scroll_title']; ?></td>
+                            <td><?php echo $data_row['scroll_link']; ?></td>
+                            <td>
+
+                                <a href='<?php echo "NOTICE/" . $data_row['scroll_link'];?>' class="btn btn-info" type="button" target="blank">VIEW</a>
+                                <?php
+                                echo "<a href='index.php?id=$data_row[id]' class='btn btn-danger' type='button'>DELETE</a>"
+                                ?>
+                            </td>
+
+                        </tr>
+                        <?php
+                        }
+                    }
+                    ?>
+                <tbody>
+            </table>
+            <script>
+                $(document).ready(function() {
+                $('#scrolling_notice').DataTable( {
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                } );
+            } );
+            </script>
+            </section>
             </p>
           </div>
         </div>
@@ -284,7 +370,7 @@ if(isset($_GET['id'])){
                                     <td>" . $row["book_author"] . "</td>
                                     <td>" . $row["book_publisher"] . "</td>
                                     <td>" . $row["book_edition"] . "</td>
-                                    <td><a class='btn btn-primary' href='index.php?id=$row[id]'>Delete</a></td>
+                                    <td><a class='btn btn-danger' href='index.php?id=$row[id]'>Delete</a></td>
                                 </tr>";       
                         }
                     }
@@ -337,7 +423,7 @@ if(isset($_GET['id'])){
                                     <td>" . $row["book_author"] . "</td>
                                     <td>" . $row["book_publisher"] . "</td>
                                     <td>" . $row["book_edition"] . "</td>
-                                    <td><a class='btn btn-primary' href='index.php?id=$row[id]'>Delete</a></td>
+                                    <td><a class='btn btn-danger' href='index.php?id=$row[id]'>Delete</a></td>
                                 </tr>";       
                         }
                     }
@@ -390,7 +476,7 @@ if(isset($_GET['id'])){
                                     <td>" . $row["book_author"] . "</td>
                                     <td>" . $row["book_publisher"] . "</td>
                                     <td>" . $row["book_edition"] . "</td>
-                                    <td><a class='btn btn-primary' href='index.php?id=$row[id]'>Delete</a></td>
+                                    <td><a class='btn btn-danger' href='index.php?id=$row[id]'>Delete</a></td>
                                 </tr>";       
                         }
                     }
@@ -443,7 +529,7 @@ if(isset($_GET['id'])){
                                     <td>" . $row["book_author"] . "</td>
                                     <td>" . $row["book_publisher"] . "</td>
                                     <td>" . $row["book_edition"] . "</td>
-                                    <td><a class='btn btn-primary' href='index.php?id=$row[id]'>Delete</a></td>
+                                    <td><a class='btn btn-danger' href='index.php?id=$row[id]'>Delete</a></td>
                                 </tr>";       
                         }
                     }
@@ -496,7 +582,7 @@ if(isset($_GET['id'])){
                                     <td>" . $row["book_author"] . "</td>
                                     <td>" . $row["book_publisher"] . "</td>
                                     <td>" . $row["book_edition"] . "</td>
-                                    <td><a class='btn btn-primary' href='index.php?id=$row[id]'>Delete</a></td>
+                                    <td><a class='btn btn-danger' href='index.php?id=$row[id]'>Delete</a></td>
                                 </tr>";       
                         }
                     }
@@ -549,7 +635,7 @@ if(isset($_GET['id'])){
                                     <td>" . $row["book_author"] . "</td>
                                     <td>" . $row["book_publisher"] . "</td>
                                     <td>" . $row["book_edition"] . "</td>
-                                    <td><a class='btn btn-primary' href='index.php?id=$row[id]'>Delete</a></td>
+                                    <td><a class='btn btn-danger' href='index.php?id=$row[id]'>Delete</a></td>
                                 </tr>";       
                         }
                     }
@@ -602,7 +688,7 @@ if(isset($_GET['id'])){
                                     <td>" . $row["book_author"] . "</td>
                                     <td>" . $row["book_publisher"] . "</td>
                                     <td>" . $row["book_edition"] . "</td>
-                                    <td><a class='btn btn-primary' href='index.php?id=$row[id]'>Delete</a></td>
+                                    <td><a class='btn btn-danger' href='index.php?id=$row[id]'>Delete</a></td>
                                 </tr>";       
                         }
                     }
@@ -655,7 +741,7 @@ if(isset($_GET['id'])){
                                     <td>" . $row["book_author"] . "</td>
                                     <td>" . $row["book_publisher"] . "</td>
                                     <td>" . $row["book_edition"] . "</td>
-                                    <td><a class='btn btn-primary' href='index.php?id=$row[id]'>Delete</a></td>
+                                    <td><a class='btn btn-danger' href='index.php?id=$row[id]'>Delete</a></td>
                                 </tr>";       
                         }
                     }
@@ -686,6 +772,9 @@ if(isset($_GET['id'])){
     <div class = "container-fluid">
         <div class = "row row-height">
           <div class = "col side4">
+          <p class="note note-light text-danger">
+                <strong>Note:</strong> Before uploading a new opac user manual. First click the delete button to delete the old one and reupload the new opac user manual by clicking the update button. View the file by clicking the view button.
+            </p>
             <p id="body4">
             <?php
             if(isset($_SESSION['status']) && $_SESSION != ''){
@@ -732,7 +821,7 @@ if(isset($_GET['id'])){
                             if(mysqli_num_rows($result)>0){
                                 foreach($result as $row) {
                                     ?>
-                                    <a class='btn btn-primary' href='<?php echo "src/" . $row['opac_manual_file'];?>' target="blank">View</a>
+                                    <a class='btn btn-info' href='<?php echo "src/" . $row['opac_manual_file'];?>' target="blank">View</a>
                             <?php
                                 }
                             }

@@ -241,7 +241,7 @@ ul{
     overflow: hidden;
     position: relative;
 }
-#cssmarquee p {
+#cssmarquee p{
     position: absolute;
     width: 100%;
     height: 100%;
