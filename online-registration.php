@@ -233,7 +233,7 @@ session_start();
           <script src="JAVASCRIPT/lightbox.js"></script>  
         </div>
         <hr class="footer-hr">
-    <p class="copyright" id="copy">Copyrights © 2022 GOVERNMENT COLLEGE OF ENGINEERING KALAHANDI</p>
+    <p class="copyright" id="copy">Copyrights © <script> document.write(new Date().getFullYear());</script> GOVERNMENT COLLEGE OF ENGINEERING KALAHANDI</p>
     <p class="copyright-1" id="copy-1">Website Designed & Developed by <a href="https://elitesurya4.github.io/portfolio/" id="suryanshu" target="blank">Suryanshu Patnaik </a> & <a href="https://s-2001-star.github.io/portfolio/" id="suprita" target="blank">Suprita Panda</a> (ELECTRICAL BATCH OF 2019-23) - All Rights Reserved</p>    </div>
   </footer> 
   </body>
