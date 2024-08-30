@@ -1,15 +1,18 @@
 <?php
-$servername="localhost";
-$username="root";
-$password="";
-$database_name="librarygcek_suggestbooks";
+// $servername="localhost";
+// $username="root";
+// $password="";
+// $database_name="librarygcek_suggestbooks";
 
-$conn=mysqli_connect($servername,$username,$password,$database_name);
+// $conn=mysqli_connect($servername,$username,$password,$database_name);
 
-if(!$conn)
-{
-    die("Connection failed: " . mysqli_connect_error());
-}
+// if(!$conn)
+// {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
+
+require('CONFIG/connection.php');
+session_start();
 
 // --------------------basic_science--------------------
 if(isset($_POST['save']))
@@ -24,7 +27,7 @@ if(isset($_POST['save']))
     $sql_query = "INSERT INTO basic_science(name,email,book_title,book_author,book_publisher,book_edition)
     VALUES ('$name','$email','$book_title','$book_author','$book_publisher','$book_edition')";
 
-    if (mysqli_query($conn,$sql_query))
+    if (mysqli_query($con1,$sql_query))
     {
         echo '<script type="text/javascript">'; 
         echo 'alert("Request Details submitted sucessfully");'; 
@@ -35,7 +38,7 @@ if(isset($_POST['save']))
     else{
         echo '<script>alert("Oops!!");</script>';
     }
-    mysqli_close($conn);
+    mysqli_close($con1);
 }
 
 // --------------------civil_engg--------------------
@@ -51,7 +54,7 @@ if(isset($_POST['save1']))
     $sql_query = "INSERT INTO civil_engg(name,email,book_title,book_author,book_publisher,book_edition)
     VALUES ('$name','$email','$book_title','$book_author','$book_publisher','$book_edition')";
 
-    if (mysqli_query($conn,$sql_query))
+    if (mysqli_query($con1,$sql_query))
     {
         echo '<script type="text/javascript">'; 
         echo 'alert("Request Details submitted sucessfully");'; 
@@ -62,7 +65,7 @@ if(isset($_POST['save1']))
     else{
         echo '<script>alert("Oops!!");</script>';
     }
-    mysqli_close($conn);
+    mysqli_close($con1);
 }
 
 // --------------------comp_sci_engg--------------------
@@ -78,7 +81,7 @@ if(isset($_POST['save2']))
     $sql_query = "INSERT INTO comp_sci_engg(name,email,book_title,book_author,book_publisher,book_edition)
     VALUES ('$name','$email','$book_title','$book_author','$book_publisher','$book_edition')";
 
-    if (mysqli_query($conn,$sql_query))
+    if (mysqli_query($con1,$sql_query))
     {
         echo '<script type="text/javascript">'; 
         echo 'alert("Request Details submitted sucessfully");'; 
@@ -89,7 +92,7 @@ if(isset($_POST['save2']))
     else{
         echo '<script>alert("Oops!!");</script>';
     }
-    mysqli_close($conn);
+    mysqli_close($con1);
 }
 
 // --------------------electrical_engg--------------------
@@ -105,7 +108,7 @@ if(isset($_POST['save3']))
     $sql_query = "INSERT INTO electrical_engg(name,email,book_title,book_author,book_publisher,book_edition)
     VALUES ('$name','$email','$book_title','$book_author','$book_publisher','$book_edition')";
 
-    if (mysqli_query($conn,$sql_query))
+    if (mysqli_query($con1,$sql_query))
     {
         echo '<script type="text/javascript">'; 
         echo 'alert("Request Details submitted sucessfully");'; 
@@ -116,7 +119,7 @@ if(isset($_POST['save3']))
     else{
         echo '<script>alert("Oops!!");</script>';
     }
-    mysqli_close($conn);
+    mysqli_close($con1);
 }
 
 // --------------------humanity--------------------
@@ -132,7 +135,7 @@ if(isset($_POST['save4']))
     $sql_query = "INSERT INTO humanity(name,email,book_title,book_author,book_publisher,book_edition)
     VALUES ('$name','$email','$book_title','$book_author','$book_publisher','$book_edition')";
 
-    if (mysqli_query($conn,$sql_query))
+    if (mysqli_query($con1,$sql_query))
     {
         echo '<script type="text/javascript">'; 
         echo 'alert("Request Details submitted sucessfully");'; 
@@ -143,7 +146,7 @@ if(isset($_POST['save4']))
     else{
         echo '<script>alert("Oops!!");</script>';
     }
-    mysqli_close($conn);
+    mysqli_close($con1);
 }
 
 // --------------------mech_engg--------------------
@@ -159,7 +162,7 @@ if(isset($_POST['save5']))
     $sql_query = "INSERT INTO mech_engg(name,email,book_title,book_author,book_publisher,book_edition)
     VALUES ('$name','$email','$book_title','$book_author','$book_publisher','$book_edition')";
 
-    if (mysqli_query($conn,$sql_query))
+    if (mysqli_query($con1,$sql_query))
     {
         echo '<script type="text/javascript">'; 
         echo 'alert("Request Details submitted sucessfully");'; 
@@ -170,7 +173,7 @@ if(isset($_POST['save5']))
     else{
         echo '<script>alert("Oops!!");</script>';
     }
-    mysqli_close($conn);
+    mysqli_close($con1);
 }
 
 // --------------------general--------------------
@@ -186,7 +189,7 @@ if(isset($_POST['save6']))
     $sql_query = "INSERT INTO general(name,email,book_title,book_author,book_publisher,book_edition)
     VALUES ('$name','$email','$book_title','$book_author','$book_publisher','$book_edition')";
 
-    if (mysqli_query($conn,$sql_query))
+    if (mysqli_query($con1,$sql_query))
     {
         echo '<script type="text/javascript">'; 
         echo 'alert("Request Details submitted sucessfully");'; 
@@ -197,7 +200,7 @@ if(isset($_POST['save6']))
     else{
         echo '<script>alert("Oops!!");</script>';
     }
-    mysqli_close($conn);
+    mysqli_close($con1);
 }
 
 // --------------------others--------------------
@@ -213,7 +216,7 @@ if(isset($_POST['save7']))
     $sql_query = "INSERT INTO others(name,email,book_title,book_author,book_publisher,book_edition)
     VALUES ('$name','$email','$book_title','$book_author','$book_publisher','$book_edition')";
 
-    if (mysqli_query($conn,$sql_query))
+    if (mysqli_query($con1,$sql_query))
     {
         echo '<script type="text/javascript">'; 
         echo 'alert("Request Details submitted sucessfully");'; 
@@ -224,6 +227,6 @@ if(isset($_POST['save7']))
     else{
         echo '<script>alert("Oops!!");</script>';
     }
-    mysqli_close($conn);
+    mysqli_close($con1);
 }
 ?>

@@ -1,4 +1,4 @@
-<?php require('connection.php');
+<?php require('../CONFIG/connection.php');
 session_start();
 if(empty($_SESSION['logged_in']) || $_SESSION['logged_in'] == ''){
     header("location: login.php");

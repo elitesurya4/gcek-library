@@ -1,6 +1,6 @@
 <?php
 
-require('connection.php');
+require('../CONFIG/connection.php');
 session_start();
 
 if(isset($_POST['login']))

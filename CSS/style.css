@@ -2232,6 +2232,7 @@ ul{
     font-size: 1.7vw;
     margin-top: -2.5vw;
     margin-left: 12vw;
+    margin-bottom: 2rem;
 }
 .visitor{
     margin-top: 2vw;
@@ -2254,6 +2255,9 @@ ul{
 }
 .page-viewers{
     margin-left: -1vw;
+    display: flex;
+    flex-direction: row;
+    gap: 2;
 }
 .map{
     width:20vw;
@@ -3385,6 +3389,11 @@ ul{
         color: black;
     }
 }
+
+.libImg{
+    border-radius: 50%;
+    width: 6.52vw;
+}
 /*-----------------------OPAC-----------------------*/
 .opac-link{
     font-size:2vw;
@@ -3436,7 +3445,7 @@ ul{
     max-width: 14.65vw;
     padding: 0vw 1.30vw;
     margin-top: -7.5vw;
-    margin-left: 7.73vw;
+    margin-left: 10.73vw;
 }
 .wrap .parent-tabs,
 .wrap .child-tab{
